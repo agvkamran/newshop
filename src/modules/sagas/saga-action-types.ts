@@ -1,0 +1,5 @@
+export const SagaActionTypes = {
+    LOAD_CATEGORY: 'LOAD_CATEGORY',
+    GET_PRODUCT_INFO: 'GET_PRODUCT_INFO',
+    GET_ALL_PRODUCTS: 'GET_ALL_PRODUCTS'
+}

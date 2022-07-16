@@ -1,0 +1,68 @@
+.block {
+    background-color: aliceblue;
+    width: 50px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    overflow: hidden;
+    position: relative;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-left: 20px;
+}
+
+.inner-block-moon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    transition: .1s all ease;
+}
+
+.inner-block-sun {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    transition: .3s all ease;
+    margin: -50px;
+}
+
+.moon {
+    font-size: 24px;
+    color: #fff;
+    transition: 1s all ease;
+}
+
+.moon-background {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #0E185F;
+    width: 50px;
+    height: 100%;
+}
+
+.sun-background {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #FFE61B;
+    width: 50px;
+    height: 100%;
+}
+
+.sun {
+    font-size: 24px;
+    color: #fff;
+    transition: 1s all ease;
+}
+
+.moon-background:hover > .moon {
+    transform: rotate(360deg);
+}
+
+.sun-background:hover > .sun {
+    transform: rotate(360deg);
+}
