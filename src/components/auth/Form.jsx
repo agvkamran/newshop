@@ -1,11 +1,13 @@
+import './form.css';
+import styled from "styled-components";
 import { useState } from "react";
 import { checkPasswordToNumber, checkPasswordToSpecialSymbol, checkPasswordToUpperCase } from "../../utils/utils";
-import './form.css';
 import { IoEyeSharp, IoEyeOffSharp } from "react-icons/io5";
 import Conditions from "../Condtions";
 import { NavLink } from "react-router-dom";
 import { TbHanger } from "react-icons/tb";
-import styled from "styled-components";
+import { BsFillQuestionCircleFill } from "react-icons/bs"
+import Question from '../Question';
 
 const Form = ({ title, handleClick }) => {
     const [email, setEmail] = useState('');
@@ -39,14 +41,14 @@ const Form = ({ title, handleClick }) => {
                             <h2 className="welcome">
                                 Welcome back!
                             </h2>
-                            <p className="paragraph">If you don't have an account</p>
+                            <p className="paragraph">If you don't have an account then</p>
                             <NavLink className='navlink_button' to='/signUp'>Registration</NavLink>
                         </div>
                         : <div className="titles_inner">
                             <h2 className="welcome">
                                 Welcome!
                             </h2>
-                            <p className="paragraph">Log in to your account</p>
+                            <p className="paragraph">If you have an account</p>
                             <NavLink className='navlink_button' to='/signIn'>Login</NavLink>
                         </div>
                     }
@@ -71,6 +73,7 @@ const Form = ({ title, handleClick }) => {
                     <Conditions pass={pass} checkPasswordToUpperCase={checkPasswordToUpperCase} checkPasswordToNumber={checkPasswordToNumber} checkPasswordToSpecialSymbol={checkPasswordToSpecialSymbol} />
                 </div>
             </div>
+            <Question />
         </div>
     )
 }
@@ -82,5 +85,6 @@ const Hanger = styled(TbHanger)`
     left: 10px;
     transform: rotate(-45deg);
     color: #fff;
-`
+    `
+
 export default Form;
