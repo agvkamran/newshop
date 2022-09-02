@@ -1,5 +1,3 @@
-import { stat } from "fs";
-import { Favorites } from "../../components/Favorites";
 import { ActionTypes } from "./action-types";
 
 export interface IState {
@@ -9,7 +7,8 @@ export interface IState {
     favorites: any,
     searchValue: string,
     filtered: any,
-    isLoading: boolean
+    isLoading: boolean,
+    basket: string[]
 }
 
 const initialState: IState = {
@@ -19,7 +18,8 @@ const initialState: IState = {
     favorites: [],
     searchValue: '',
     filtered: [],
-    isLoading: false
+    isLoading: false,
+    basket: []
 };
 
 const productReducer = (state = initialState, action: any) => {
@@ -56,6 +56,13 @@ const productReducer = (state = initialState, action: any) => {
                     return i.id === action.payload
                 })]
             }
+        case ActionTypes.REMOVE_FROM_FAVORITES:
+            return {
+                ...state,
+                favorites: [...state.favorites.filter((i: any) => {
+                    return i.id !== action.payload
+                })]
+            }
         case ActionTypes.SET_SEARCH_VALUE:
             return {
                 ...state,
@@ -72,6 +79,20 @@ const productReducer = (state = initialState, action: any) => {
             return {
                 ...state,
                 isLoading: action.payload
+            }
+        case ActionTypes.ADD_TO_BASKET:
+            return {
+                ...state,
+                basket: [...state.basket, ...state.allProducts.filter((item: any) => {
+                    return item.id === action.payload
+                })]
+            }
+        case ActionTypes.REMOVE_FROM_BASKET:
+            return {
+                ...state,
+                basket: [...state.basket.filter((item: any) => {
+                    return item.id !== action.payload
+                })]
             }
         default: return state
     }

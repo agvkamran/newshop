@@ -1,14 +1,14 @@
 import { useSelector } from "react-redux";
-import { selectFavorites } from "../modules/redux/selectors"
+import { selectBasket } from "../modules/redux/selectors";
 import { motion } from "framer-motion";
 import styled from "styled-components";
-import { useNavigate } from "react-router-dom"
-import { selectToken } from "../modules/redux/user/selector";
+import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
+import { selectToken } from "../modules/redux/user/selector";
 import { Product } from "./Product";
 
-export const Favorites = () => {
-    const favorites = useSelector(selectFavorites);
+const Basket = () => {
+    const basket = useSelector(selectBasket);
     const token = useSelector(selectToken);
     const navigate = useNavigate();
 
@@ -22,7 +22,7 @@ export const Favorites = () => {
         <>
             {token && (
                 <Wrapper>
-                    {favorites.length > 0 ? <Product props={favorites} /> : <h1>Your favorite list is currently empty!</h1>}
+                    {basket.length > 0 ? <Product props={basket} /> : <h1>Your favorite list is currently empty!</h1>}
                 </Wrapper>
             )
             }
@@ -37,6 +37,6 @@ const Wrapper = styled(motion.div)`
     width: 100%;
     flex-wrap: wrap;
     padding: 30px 80px;
-    min-height: 90vh;
-    background: #F9F9F9;
 `;
+
+export default Basket;

@@ -1,20 +1,24 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom"
-import { removeProductInfoAC } from "../modules/redux/action";
-import { selectisLoading, selectProductInfo } from "../modules/redux/selectors";
+import { addToBasketAC, addToFavoritesAC, removeFromBasketAC, removeFromFavoritesAC, removeProductInfoAC } from "../modules/redux/action";
+import { selectBasket, selectFavorites, selectisLoading, selectProductInfo } from "../modules/redux/selectors";
 import { getProductInfoACS } from "../modules/sagas/saga-action";
 import { motion } from "framer-motion";
 import { CircleLoader } from "react-spinners";
 import styled from "styled-components";
 import ReactImageMagnify from 'react-image-magnify';
+import FavoriteLogic from "./FavoriteLogic";
+import BasketLogic from "./BasketLogic";
 
 export const ProductInfo = () => {
     const productInfo = useSelector(selectProductInfo);
+    const basket = useSelector(selectBasket);
     const isLoading = useSelector(selectisLoading);
+    const favorites = useSelector(selectFavorites);
     const productId = useParams();
     const dispatch = useDispatch();
-    console.log(isLoading);
+
     useEffect(() => {
         //@ts-ignore
         dispatch(getProductInfoACS(productId.id))
@@ -53,6 +57,8 @@ export const ProductInfo = () => {
                         <p>{productInfo?.rating.count}</p>
                         <p>{productInfo?.description}</p>
                         <p>{productInfo?.price}</p>
+                        <FavoriteLogic items={favorites} productInfoId={productInfo?.id} removeFromFavoritesAC={removeFromFavoritesAC} addToFavoritesAC={addToFavoritesAC} />
+                        <BasketLogic items={basket} productInfoId={productInfo?.id} removeFromBasketAC={removeFromBasketAC} addToBasketAC={addToBasketAC} />
                     </Descriptions>
                 </InfoBlock > : <CircleLoader color='#22577E' size={200} />
             }

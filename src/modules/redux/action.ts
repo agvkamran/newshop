@@ -40,6 +40,13 @@ export const addToFavoritesAC = (productId: any) => {
     }
 }
 
+export const removeFromFavoritesAC = (productId: any) => {
+    return {
+        type: ActionTypes.REMOVE_FROM_FAVORITES,
+        payload: productId
+    }
+}
+
 export const setSearchValueAC = (searchValue: string) => {
     return {
         type: ActionTypes.SET_SEARCH_VALUE,
@@ -57,5 +64,19 @@ export const setIsLoadingAC = (isLoading: boolean) => {
     return {
         type: ActionTypes.SET_IS_LOADING,
         payload: isLoading
+    }
+}
+
+export const addToBasketAC = (productId: any) => {
+    return {
+        type: ActionTypes.ADD_TO_BASKET,
+        payload: productId
+    }
+}
+
+export const removeFromBasketAC = (productId: any) => {
+    return {
+        type: ActionTypes.REMOVE_FROM_BASKET,
+        payload: productId
     }
 }

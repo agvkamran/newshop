@@ -1,49 +1,65 @@
-import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import SignIn from './components/auth/SignIn';
+import SignUp from './components/auth/SignUp';
+import Basket from './components/Basket';
 import { Categories } from './components/categories/Categories';
 import { Category } from './components/categories/Category';
 import { Favorites } from './components/Favorites';
 import { Home } from './components/Home';
+import NotFound from './components/NotFound';
 import { ProductInfo } from './components/ProductInfo';
-// import { ThemeContext } from './components/theme/Theme';
+import Search from './components/Search';
+import { selectToken } from './modules/redux/user/selector';
 import { getAllProductsACS } from './modules/sagas/saga-action';
+// import { ThemeContext } from './components/theme/Theme';
 
 const App = () => {
-  const themes = {
-    light: {
-        foreground: "#000000",
-        background: "#eeeeee"
-    },
-    dark: {
-        foreground: "#ffffff",
-        background: "#222222"
-    }
-};
-
-const ThemeContext = React.createContext(themes.light);
-
   const dispatch = useDispatch();
+  const token = useSelector(selectToken);
+  const [mobMenu, setMobMenu] = useState(false);
 
   useEffect(() => {
     dispatch(getAllProductsACS());
   }, []);
 
-  return (
-    // <ThemeContext.Provider value={{ theme, toggleTheme}}>
-      <BrowserRouter>
-        <div className="App">
-          <Categories />
-          <Routes>
-            <Route path='/' element={<Home />} />
-            <Route path="/category/:type" element={<Category />} />
-            <Route path="/product/:id" element={<ProductInfo />} />
-            <Route path="/favorites" element={<Favorites />} />
-          </Routes>
+  useEffect(() => {
+    const windowSize = window.addEventListener('resize', () => {
+      if (window.innerWidth >= 1200) {
+        setMobMenu(false);
+      }
+    })
+    return () => window.removeEventListener('resize', windowSize);
+  }, [window.innerWidth, mobMenu]);
 
-        </div>
-      </BrowserRouter>
-    // </ThemeContext.Provider>
+  return (
+    <BrowserRouter>
+      <div className="App">
+        {
+          mobMenu
+            ?
+            <Categories mobMenu={mobMenu} setMobMenu={setMobMenu} />
+            :
+            <>
+              <Categories mobMenu={mobMenu} setMobMenu={setMobMenu} />
+              <Routes>
+                <Route path='/' element={<Home />} />
+                <Route path="/category/:type" element={<Category />} />
+                <Route path="/product/:id" element={<ProductInfo />} />
+                <Route path="/favorites" element={<Favorites />} />
+                <Route path="/search" element={<Search />} />
+                <Route path='/basket' element={<Basket />} />
+                <Route path='/signUp' element={<SignUp />} />
+                <Route path='/signIn' element={<SignIn />} />
+                <Route path='/*' element={<NotFound />} />
+              </Routes>
+            </>
+        }
+
+        {/* <Slider /> */}
+      </div>
+    </BrowserRouter>
   );
 }
 

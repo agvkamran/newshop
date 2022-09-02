@@ -8,3 +8,4 @@ export const selectFavorites = (state: any) => state.productReducer.favorites;
 export const selectSearchValue = (state: any) => state.productReducer.searchValue;
 export const selectFiltered = (state: any) => state.productReducer.filtered;
 export const selectisLoading = (state: any) => state.productReducer.isLoading;
+export const selectBasket =(state: any) => state.productReducer.basket;

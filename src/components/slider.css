@@ -1,0 +1,15 @@
+.main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.slide_image {
+    background-color: 'lightblue';
+    min-width: 400px;
+    max-width: 400px;
+    min-height: 400px;
+    max-height: 400px;
+    transition: .8s all ease;
+    transition-duration: 1s ease;
+}
