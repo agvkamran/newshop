@@ -16,6 +16,7 @@ export const Categories = (props) => {
     const token = useSelector(selectToken);
     const [searchInput, setSearchInput] = useState('');
     const { mobMenu, setMobMenu } = props;
+    console.log('mobmenu', mobMenu)
     const nav = useNavigate();
     const onInputChange = (e) => {
         setSearchInput(e);
@@ -140,8 +141,8 @@ const TopLine = styled.span`
     width: 28px;
     background: #fff;
     border-radius: 5px;
+    transition: .4s all ease;
     transform: ${props => props.line ? 'rotate(45deg)' : 'rotate(0deg)'};
-    transition: .4s all linear;
     transform-origin: top left;
  `
 
@@ -149,7 +150,7 @@ const CenterLine = styled.span`
     height: 4px;
     background: #fff;
     border-radius: 5px;
-    transition: .2s all linear;
+    transition: .2s all ease;
     width: ${props => props.line ? '0' : '28px'}
  `
 
@@ -158,7 +159,7 @@ const BottomLine = styled.span`
     width: 28px;
     background: #fff;
     border-radius: 5px;
-    transition: .4s all linear;
+    transition: .4s all ease;
     transform: ${props => props.line ? 'rotate(-45deg)' : 'rotate(0deg)'};
     transform-origin: bottom left;
  `

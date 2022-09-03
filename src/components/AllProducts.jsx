@@ -7,6 +7,7 @@ import Scroll from "./Scroll";
 import Pagination from "./Pagination";
 import { Product } from "./Product";
 import { useSelector } from "react-redux";
+import { selectUser } from "../modules/redux/user/selector";
 
 export const ALLProducts = ({ props }) => {
     const [scrollToTop, setScrollToTop] = useState(false);

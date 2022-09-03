@@ -6,18 +6,16 @@ import SignUp from './components/auth/SignUp';
 import Basket from './components/Basket';
 import { Categories } from './components/categories/Categories';
 import { Category } from './components/categories/Category';
+import EditProfile from './components/EditProfile';
 import { Favorites } from './components/Favorites';
 import { Home } from './components/Home';
 import NotFound from './components/NotFound';
 import { ProductInfo } from './components/ProductInfo';
 import Search from './components/Search';
-import { selectToken } from './modules/redux/user/selector';
 import { getAllProductsACS } from './modules/sagas/saga-action';
-// import { ThemeContext } from './components/theme/Theme';
 
 const App = () => {
   const dispatch = useDispatch();
-  const token = useSelector(selectToken);
   const [mobMenu, setMobMenu] = useState(false);
 
   useEffect(() => {
@@ -52,11 +50,11 @@ const App = () => {
                 <Route path='/basket' element={<Basket />} />
                 <Route path='/signUp' element={<SignUp />} />
                 <Route path='/signIn' element={<SignIn />} />
+                <Route path='/edit' element={<EditProfile />} />
                 <Route path='/*' element={<NotFound />} />
               </Routes>
             </>
         }
-
         {/* <Slider /> */}
       </div>
     </BrowserRouter>

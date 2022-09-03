@@ -6,7 +6,6 @@ import { IoEyeSharp, IoEyeOffSharp } from "react-icons/io5";
 import Conditions from "../Condtions";
 import { NavLink } from "react-router-dom";
 import { TbHanger } from "react-icons/tb";
-import { BsFillQuestionCircleFill } from "react-icons/bs"
 import Question from '../Question';
 
 const Form = ({ title, handleClick }) => {

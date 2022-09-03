@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { MdDone } from "react-icons/md";
-import { TiDeleteOutline } from "react-icons/ti";
 import { TbCircleDot } from "react-icons/tb";
 
 const Conditions = (props) => {
@@ -20,8 +19,9 @@ const ConditionsWrapper = styled.div`
     align-items: flex-start;
     justify-content: center;
     flex-direction: column;
-    gap: 5px;
+    gap: 10px;
 `
+
 const OneCondition = styled.div`
     display: flex;
     align-items: center;
@@ -40,4 +40,5 @@ const Live = styled(TbCircleDot)`
     height: '28px';
     width: '28px';
 `
+
 export default Conditions;

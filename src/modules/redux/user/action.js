@@ -12,3 +12,10 @@ export const removeUserAC = () => {
         type: ActionTypes.REMOVE_USER
     }
 }
+
+export const changeUserNameAC = (payload) => {
+    return {
+        type: ActionTypes.CHANGE_USER_NAME,
+        payload: payload
+    }
+}

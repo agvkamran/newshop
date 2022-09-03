@@ -18,7 +18,7 @@
 }
 
 .inner_form {
-    padding: 30px 25px;
+    padding: 80px 25px;
     position: relative;
     display: flex;
     align-items: center;
@@ -86,8 +86,9 @@
 .eye {
     cursor: pointer;
     position: absolute;
-    top: 90px;
+    top: 85px;
     right: 40px;
+    color: #558599;
 }
 
 .navlink_button {
@@ -118,5 +119,14 @@
     .inner_wrapper{
         flex-direction: column;
         margin: 50px;
+    }
+    .inner_form {
+        border-radius: 0 0 25px 25px;
+    }
+}
+
+@media (max-width: 768px) {
+    .inner_form {
+        padding: 80px 20px;
     }
 }

@@ -19,3 +19,9 @@ export const checkPasswordToNumber = (pass) => {
         if (pass[i].charCodeAt() >= 48 && pass[i].charCodeAt() <= 57) return true
     }
 }
+
+export const correctName = (name) => {
+    const idx = name.indexOf('@');
+    name = name.slice(0, idx);
+    return name;
+}

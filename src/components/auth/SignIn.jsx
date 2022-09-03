@@ -17,7 +17,8 @@ const SignIn = () => {
             dispatch(setUserAC({email, uid, accessToken}))
             navigate('/');
         })
-            .catch(console.error)
+        
+        .catch(console.error)
     }
 
     return (
